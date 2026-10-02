@@ -1,4 +1,6 @@
-import pandas as pd 
+import pandas as pd
+from sqlalchemy import create_engine 
+import os           
 
 df = pd.read_csv("customer_shopping_behavior.csv")
 df.head() # top 5 rows of dataset
@@ -58,3 +60,27 @@ print((df['discount_applied'] == df['promo_code_used']).all()) # check if both c
 # since we get the above result as true , means the columns are redundant and we can drop one of the column. We will drop the promo_code_used column.
 df = df.drop(columns=['promo_code_used'])
 print(df.columns)
+
+#intsall  pip install psycopg2-binary sqlalchemy 
+#connect to postgresql database and create a table and insert the data into the table
+username = 'postgres'
+password = os.getenv('pass')  # get the password from .env file
+host = 'localhost'
+port = '5432'
+database = 'Customer_behavior'
+
+engine = create_engine(
+    f'postgresql+psycopg2://{username}:{password}@{host}:{port}/{database}'
+)
+
+table_name = 'customer_shopping_behavior'
+
+df.to_sql(
+    table_name,
+    engine,
+    if_exists='replace',
+    index=False
+)
+
+print(f"Data inserted into {table_name} table in {database} database successfully!")
+
