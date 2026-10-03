@@ -159,8 +159,8 @@ Adjust this to match your repository.
 
 **Aayush**
 
-- GitHub: [@your-username](https://github.com/aayush45123)
-- LinkedIn: [your-profile](https://www.linkedin.com/in/aayush-bharda-399958311/)
+- GitHub: [@aayush45123](https://github.com/aayush45123)
+- LinkedIn: [Aayush Bharda](https://www.linkedin.com/in/aayush-bharda-399958311/)
 
 ---
 
